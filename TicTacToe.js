@@ -1,35 +1,39 @@
 const Container = document.getElementById('grid-container');
-const Board = ["x", "o","x", "o","x", "o","x", "o", "x"];
+const marker = [];
+
+const playGame = (player, marker) =>{
+    const getName = () => player;
+    const getMarker = () => marker;
+    
 
 const gameboard = () =>{   
-        for(var i =0; i<9; i++){
+        for(var i =1; i<10; i++){
             let box = document.createElement('div');
             box.classList.add('cell');
             Container.append(box);
             box.setAttribute("id", i);
+            
         }
     };
     gameboard();
 
-    const placeMarker = () =>{
+const placeMarker = () =>{
         cells.forEach(cell => {
             cell.addEventListener('click', event=>{
-               if(event.target){
-
+                index = event.target.id
+               if(index){
+                    cell.textContent = 'x';
+                    marker.splice(index, 1);
                }
                
               
             });
         });
-        // return{getMarker,placeMarker};
     };
+    return {getName, getMarker, placeMarker};
+}
 
+const player = playGame('Obi', 'x');
 
+marker.push(player);
         
-
-
-// const player1 = Player('x');
-// const player2 = Player('o');
-
-// player1.placeMarker();
-// player2.placeMarker();
