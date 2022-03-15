@@ -1,8 +1,7 @@
 const Container = document.querySelector("#grid-container");
 const cells = document.querySelectorAll(".cell");
-
-let currentPlayer = 'x';
-let nextPlayer = 'o';
+let activePlayer = 0;
+let players = ['x', 'o'];
 
 const gameBoardArray = [];
 
@@ -13,27 +12,35 @@ const gameBoardArray = [];
 //     return {getName, getMarker};
 // };
 
-const currentPlayerMarker = () =>{
+const PlaceMarker = () =>{
 // let currentPlayer = 'o';
 cells.forEach((cell) => {
     cell.addEventListener('click', (e)=>{
         let clickedCell = e.target;
+        
         index = parseInt(clickedCell.getAttribute('id')); //getting id for cell clicked
+        
         if(gameBoardArray === ''){
             return; 
-        }else if(clickedCell.textContent !== currentPlayer){
-        gameBoardArray[index] = currentPlayer;
-        clickedCell.textContent = currentPlayer;
-        console.log(gameBoardArray);      
+        }
+        else if(clickedCell.textContent !== players){
+        
+            activePlayer = activePlayer == 0 ? 1:0;
+            gameBoardArray[index] = players[activePlayer];
+            clickedCell.textContent = players[activePlayer];
+        
+            console.log(gameBoardArray);      
         }
     });
 
 });
 };
 
+const checkWin = () =>{
+    
+};
 
-
-currentPlayerMarker();
+PlaceMarker();
 
 
 // const player1 = playGame('Obi', 'x');
