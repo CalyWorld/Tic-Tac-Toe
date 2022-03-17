@@ -9,7 +9,35 @@
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    <div id="grid-container">
+    <div id="button-container">
+        <button id="startbutton">Start/Restart</button>
     </div>
+    <div id="form-container">
+        <form id="form">
+            <label for="fname">PLayer1: </label>
+            <input type="text" id="fname" placeholder="Enter Name.." name="Name">
+
+            <label for="lname">PLayer2: </label>
+            <input type="text" id="lname" placeholder="Enter Name.." name="Name">
+
+            <div id="form-submit">
+                <input type="button" id="submit" value="submit">
+            </div>
+        </form>
+    </div>
+
+    <div id="statusMessage"></div>
+    
+    <div id="grid-container">
+        <div id="0" class="cell"></div>                              
+        <div id="1" class="cell"></div>
+        <div id="2" style="border-right:none;" class="cell"></div>
+        <div id="3" class="cell"></div>
+        <div id="4" class="cell"></div>
+        <div id="5" style="border-right:none;" class="cell"></div>
+        <div id="6" style="border-bottom: none;" class="cell"></div>
+        <div id="7" style="border-bottom: none;" class="cell"></div>
+        <div id="8" style="border-right:none; border-bottom: none;" class="cell"></div>
+        </div>
 </body>
 </html>
