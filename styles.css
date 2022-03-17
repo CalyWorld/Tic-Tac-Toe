@@ -11,6 +11,69 @@
     margin: 0px;
     padding: 0px;
     height: 120vh;
+    
+  }
+
+  #button-container{
+    margin: 10px;
+  }
+  #startbutton{
+    padding:10px;
+  }
+  #form-container{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+  #form{
+    border-radius: 20px;
+    width: 70%;
+    padding: 20px;
+  }
+  label{
+    padding:5px;
+    margin:20px;
+  }
+  input[type=text], select{
+    width: 65%;
+    padding: 8px 16px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  #form-submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  input[id=submit] {
+    width: 40%;
+    background-color: #603601;
+    color: white;
+    padding: 4px 8px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #folder{
+    display: none;
+    margin:20px;
+    width: 50%;
+    padding: 10px;
+  }
+
+  p{
+    padding: 10px;
+    margin: 10px;
+  }
+  #statusMessage{
+    display: none;
+    margin:20px;
+    padding:20px;
+    font-family: 'Courier New', Courier, monospace;
   }
   
   #grid-container{
@@ -18,8 +81,6 @@
      gap:5px;
      justify-content:center;
      margin-top:50px;
-     /* width:500px;
-     height:500px; */
      grid-template-columns: repeat(3, 1fr);
      grid-template-rows: 1fr 1fr;
      padding: 10px;
@@ -27,11 +88,11 @@
   .cell{
       width:100px;
       height: 100px;
-      /* display: flex; */
-      /* justify-content: center;
-      align-items: center; */
-      /* border-top: none;
-      border-left: none; */
+      display: flex;
+      justify-content: center;
+      align-items: center; 
+      border-top: none;
+      border-left: none; 
   }
 
 
