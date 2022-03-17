@@ -17,6 +17,7 @@ const coordinates = [
 ]; 
 
 const winningMessage = () => console.log(`${currentPlayer} Wins`);
+const drawMessage = () => console.log(`it is a Tie`);
 
 const placeMarker = () =>{
     gameBoard.forEach((cell) => {
@@ -25,14 +26,23 @@ const placeMarker = () =>{
         
         index = parseInt(clickedCell.getAttribute('id')); //getting id for cell clicked
         
+        //if array is not empty and we can't placeMarks on board anymore
         if(gameBoardArray[index] !== '' || !gameActive){
             return; 
         }
+        //X or O can;t be changed in each gameboard Cell
         else if(clickedCell.textContent !== currentPlayer){
-        
+            
+            //switch marks 
             currentPlayer = currentPlayer === 'x' ? 'o' : 'x';
+
+            //X is stored in gameboard array which is what we use to validate win
             gameBoardArray[index] = currentPlayer;
+
+            //stored x in cell of gameboard
             clickedCell.textContent = currentPlayer;
+
+            //validates win when x is placed on respective coordinates
             checkWin();     
         }
     });
@@ -42,7 +52,7 @@ const placeMarker = () =>{
 
 const checkWin = () =>{
    
-    //assign roundWon
+    //assign roundWon to false so no win till all coordinates have been checked
     let roundWon = false;
 
     //assign roundDraw
@@ -79,14 +89,23 @@ const checkWin = () =>{
     // if false
     if(roundWon){
         winningMessage();
+
+        //no placing of marks on the board allowed after winning message
+        gameActive = false;
+
+        return;
+    }
+
+     //check if there are cells in our gameboard array that is still empty
+    roundDraw = !gameBoardArray.includes('');
+
+    if(roundDraw){
+        drawMessage();
         gameActive = false;
         return;
     }
 
-     //check if there are any sign in our gameboardArray
-    roundDraw = !gameBoardArray.includes('');
-
-    
+    placeMarker();
 }
 
 
