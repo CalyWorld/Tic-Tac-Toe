@@ -1,11 +1,21 @@
-const container = document.querySelector("#grid-container");
-const gameBoard = document.querySelectorAll(".cell");
+const Player = (name, marker)=>{
+    const getName = ()=> name;
+    const getMarker = ()=> marker;
+    return{getName, getMarker}
+};
 
-let gameActive =  true;
-let currentPlayer = 'x';
+const player1Name = document.getElementById("fname").value;
+const player2Name = document.getElementById("lname").value;
+const player1Marker = document.getElementById("player1-marker").value;
+const player2Marker = document.getElementById("player2-marker").value;
+const player1 = Player(player1Name, player1Marker);
+const player2 = Player(player2Name, player2Marker);
 
-const gameBoardArray = ['', '', '', '', '', '', '', '', ''];
-const coordinates = [
+
+const GameBoard = (() => {
+
+var gameBoardArray = ['', '', '', '', '', '', '', '', ''];  
+var coordinates =[
     ['0', '1', '2'],  //0
     ['3', '4', '5'],  //1
     ['6', '7', '8'],  //2
@@ -16,111 +26,109 @@ const coordinates = [
     ['2', '5', '8']   //7
 ]; 
 
-const winningMessage = () => console.log(`${currentPlayer} Wins`);
-const drawMessage = () => console.log(`it is a Tie`);
+let gameActive = true;
+var currentPlayer = player1.getMarker();
+let roundDraw = false;
 
-const placeMarker = () =>{
-    gameBoard.forEach((cell) => {
-    cell.addEventListener('click', (e)=>{
-        let clickedCell = e.target;
-        
-        index = parseInt(clickedCell.getAttribute('id')); //getting id for cell clicked
-        
-        //if array is not empty and we can't placeMarks on board anymore
-        if(gameBoardArray[index] !== '' || !gameActive){
-            return; 
-        }
-        //X or O can;t be changed in each gameboard Cell
-        else if(clickedCell.textContent !== currentPlayer){
-            
-            //switch marks 
-            currentPlayer = currentPlayer === 'x' ? 'o' : 'x';
+const placeMarker = (event) => {
+    let clickedCell = event.target;
+    
+    let index = parseInt(clickedCell.getAttribute('id'));
 
-            //X is stored in gameboard array which is what we use to validate win
+    if(gameBoardArray[index] !== '' || !gameActive){
+        return;
+    }
+    else if(gameBoardArray[index] !== player1 && gameBoardArray[index] !== player2){
+        
+        if(currentPlayer === player1.getMarker()){
+
+            currentPlayer = player2.getMarker();
             gameBoardArray[index] = currentPlayer;
-
-            //stored x in cell of gameboard
             clickedCell.textContent = currentPlayer;
 
-            //validates win when x is placed on respective coordinates
-            checkWin();     
-        }
-    });
+        }else if(currentPlayer === player2.getMarker()){
 
-});
-};
+            currentPlayer = player1.getMarker();
+            gameBoardArray[index] = currentPlayer;
+            clickedCell.textContent = currentPlayer;            
+        }
+        
+        console.log(gameBoardArray);                    
+        checkWin();
+    };
+}
+const player1WinMessage = () => console.log(`${player1.getName()} ${currentPlayer} wins`);
+const player2WinMessage = () => console.log(`${player2.getName()} ${currentPlayer} wins`);
+const drawMessage = () => console.log(`IT IS A TIE`);
+
 
 const checkWin = () =>{
-   
-    //assign roundWon to false so no win till all coordinates have been checked
-    let roundWon = false;
+    for(var i =0; i<=7; i++){
+        var position = coordinates[i];
 
-    //assign roundDraw
-    let roundDraw;
+        const player1Win = `${player1.getMarker()} ${player1.getMarker()} ${player1.getMarker()}`;
+        const player2Win = `${player2.getMarker()} ${player2.getMarker()} ${player2.getMarker()}`;
 
-    //loop through our coordinates
-    for(let i = 0; i <= 7; i++){
+        let winCoordinates = `${gameBoardArray[position[0]]} ${gameBoardArray[position[1]]} ${gameBoardArray[position[2]]}`;
+        
+        if(winCoordinates === ''){
+                continue;
+            }
+        if(winCoordinates == player1Win){
+            player1WinMessage();
+            gameActive = false;
 
-        //assign our coordinates to variable winCondition
-       let winCondition = coordinates[i]; //stores all coordinates in winCondition 
-       
-       //store winCondition values in coloumns into our gameboardarray
-       let a = gameBoardArray[winCondition[0]];    //first column  
-       let b = gameBoardArray[winCondition[1]];    //second column
-       let c = gameBoardArray[winCondition[2]];    //third column
-
-       //if the variables are empty, move to the next of condition
-       if (a === '' || b === '' || c === '') {
-
-        //move to the next if statement
-        continue;
+            }else if(winCoordinates == player2Win){
+                player2WinMessage();
+                gameActive = false;
+            }
     }
-        //if a = b and b = c, this is to determine that the marks on each cell are in respect to our coordinates
-       if(a===b && b===c){
-
-        //boolean is true
-         roundWon = true;
-         
-         //move out of for loop
-         break;
-       }
-    }
-
-    // if false
-    if(roundWon){
-        winningMessage();
-
-        //no placing of marks on the board allowed after winning message
-        gameActive = false;
-
-        return;
-    }
-
-     //check if there are cells in our gameboard array that is still empty
+    
     roundDraw = !gameBoardArray.includes('');
-
     if(roundDraw){
-        drawMessage();
         gameActive = false;
+        drawMessage();
         return;
     }
+            
+};
 
-    placeMarker();
-}
+   return{placeMarker, checkWin,player1WinMessage, player2WinMessage, drawMessage}
+
+})();
+
+const placeNames = () =>{
+
+    const formContainer = document.getElementById("form-container");
+    const container = document.querySelector("#grid-container");
+    const folder = document.getElementById("folder");
+
+    let firstPlayerHolder = document.createElement("p");
+    let secondPLayerHolder = document.createElement("p");
+
+    firstPlayerHolder.textContent = `${player1.getName()}: ${player1.getMarker()}`;
+    secondPLayerHolder.textContent = `${player2.getName()}: ${player2.getMarker()}`;
+
+    folder.append(firstPlayerHolder);
+    folder.append(secondPLayerHolder);
+
+    folder.setAttribute('style', 'display:flex; justify-content:center');
+    formContainer.setAttribute('style', 'display:none');
+    container.setAttribute('style', 'display:grid; gap:5px; justify-content:center; grid-template-columns :repeat(3, 1fr); grid-template-rows:1fr 1fr');
+    
+    
+};
+
+const displayController = (() =>{
+    const gameboard = document.querySelectorAll(".cell");
+    const submitBtn = document.querySelector('#submit');
+    submitBtn.addEventListener('click', placeNames);
+     gameboard.forEach((cell)=>{
+         cell.addEventListener('click', GameBoard.placeMarker);
+     });
+ 
+})();
 
 
-placeMarker();
 
 
-
-// const playGame = (player, marker) =>{
-
-//     const getName = () => player;
-//     const getMarker = () => marker;
-//     return {getName, getMarker};
-// };
-
-// const player1 = playGame('Obi', 'x');
-// const player2 = playGame('ben', 'x');
-
-// console.log(player1);
