@@ -55,11 +55,20 @@ const GameBoard = (() => {
     }
   };
 
-  const player1WinMessage = () => {status.textContent = (`${player1.getName()} wins`); status.setAttribute("style", "display:flex");};
+  const player1WinMessage = () => {
+    status.textContent = `${player1.getName()} wins`;
+    status.setAttribute("style", "display:flex");
+  };
 
-  const player2WinMessage = () => {status.textContent = (`${player2.getName()} wins`); status.setAttribute("style", "display:flex");};
+  const player2WinMessage = () => {
+    status.textContent = `${player2.getName()} wins`;
+    status.setAttribute("style", "display:flex");
+  };
 
-  const drawMessage = () => console.log(`IT IS A TIE`);
+  const drawMessage = () => {
+    status.textContent = `IT IS A TIE`;
+    status.setAttribute("style", "display:block;");
+  };
 
   const checkWin = () => {
     let roundDraw = false;
@@ -132,35 +141,27 @@ const placeNames = () => {
 
 const displayController = (() => {
   const startbtn = document.querySelector("#startbtn");
-  const selectbtn = document.querySelector("#select-human");
   const gameboard = document.querySelectorAll(".cell");
-  const submitBtn = document.querySelector("#submit");
+  const submitBtn = document.querySelector("#submitbtn");
   const formContainer = document.getElementById("form-container");
-  const choiceContainer = document.getElementById("select-container");
-  const AIbtn = document.querySelector("#select-AI");
-  const AIform = document.getElementById("AI-form-Container");
-  const selectChoice = () => {
-    choiceContainer.setAttribute(
-      "style",
-      "display:flex; justify-content:center; align-items:center"
-    );
-  };
+  const restartbtn = document.getElementById("restartbtn");
+
   const openForm = () => {
     formContainer.setAttribute(
       "style",
       "display:flex; justify-content:center; align-items:center"
     );
   };
-  const selectAI = () => {
-    AIform.setAttribute("style", "display:block");
-    choiceContainer.setAttribute("style", "display:none");
+
+  const restartGame = () => {
+    location.reload();
   };
-  startbtn.addEventListener("click", selectChoice);
-  selectbtn.addEventListener("click", openForm);
+
+  startbtn.addEventListener("click", openForm);
   submitBtn.addEventListener("click", placeNames);
-  AIbtn.addEventListener("click", selectAI);
+  restartbtn.addEventListener("click", restartGame);
   gameboard.forEach((cell) => {
     cell.addEventListener("click", GameBoard.placeMarker);
   });
-  return { openForm, selectChoice, selectAI };
+  return { openForm, restartGame };
 })();
