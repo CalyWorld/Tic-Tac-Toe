@@ -31,9 +31,7 @@ const GameBoard = (() => {
 
   const placeMarker = (event) => {
     let clickedCell = event.target;
-
     let index = parseInt(clickedCell.getAttribute("id"));
-
     if (gameBoardArray[index] !== "" || !gameActive) {
       return;
     } else if (
@@ -79,9 +77,8 @@ const GameBoard = (() => {
       const player1Win = `${player1.getMarker()} ${player1.getMarker()} ${player1.getMarker()}`;
       const player2Win = `${player2.getMarker()} ${player2.getMarker()} ${player2.getMarker()}`;
 
-      let winCoordinates = `${gameBoardArray[position[0]]} ${
-        gameBoardArray[position[1]]
-      } ${gameBoardArray[position[2]]}`;
+      let winCoordinates = `${gameBoardArray[position[0]]} ${gameBoardArray[position[1]]
+        } ${gameBoardArray[position[2]]}`;
 
       if (winCoordinates == player1Win) {
         player1WinMessage();
@@ -118,25 +115,34 @@ const placeNames = () => {
   const player1Marker = document.getElementById("player1-marker").value;
   const player2Marker = document.getElementById("player2-marker").value;
 
-  player1 = Player(player1Name, player1Marker);
-  player2 = Player(player2Name, player2Marker);
-  currentPlayer = player1.getMarker();
+  if (
+    player1Name !== "" &&
+    player1Marker !== "" &&
+    player2Name !== "" &&
+    player2Marker !== ""
+  ) {
+    player1 = Player(player1Name, player1Marker);
+    player2 = Player(player2Name, player2Marker);
+    currentPlayer = player1.getMarker();
 
-  let firstPlayerHolder = document.createElement("p");
-  let secondPLayerHolder = document.createElement("p");
+    let firstPlayerHolder = document.createElement("h1");
+    let secondPLayerHolder = document.createElement("h1");
 
-  firstPlayerHolder.textContent = `${player1Name}: ${player1Marker}`;
-  secondPLayerHolder.textContent = `${player2Name}: ${player2Marker}`;
+    firstPlayerHolder.textContent = `${player1Name}: ${player1Marker}`;
+    secondPLayerHolder.textContent = `${player2Name}: ${player2Marker}`;
 
-  folder.append(firstPlayerHolder);
-  folder.append(secondPLayerHolder);
+    folder.append(firstPlayerHolder);
+    folder.append(secondPLayerHolder);
 
-  folder.setAttribute("style", "display:flex; justify-content:center");
-  formContainer.setAttribute("style", "display:none");
-  container.setAttribute(
-    "style",
-    "display:grid; gap:5px; justify-content:center; grid-template-columns :repeat(3, 1fr); grid-template-rows:1fr 1fr"
-  );
+    folder.setAttribute("style", "display:flex; justify-content:center");
+    formContainer.setAttribute("style", "display:none");
+    container.setAttribute(
+      "style",
+      "display:grid; gap:5px; justify-content:center; grid-template-columns :repeat(3, 1fr); grid-template-rows:1fr 1fr"
+    );
+  } else {
+    alert("fill in the form");
+  }
 };
 
 const displayController = (() => {
