@@ -1,100 +1,111 @@
-*{
-    box-sizing: border-box;
-    border: 1px solid red;
-  }
-  
-  body{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items: center;
-    margin: 0px;
-    padding: 0px;
-    height: 120vh;
-    
-  }
+* {
+  box-sizing: border-box;
+  border: 1px solid red;
+}
 
-  #button-container{
-    margin: 10px;
-  }
-  #startbutton{
-    padding:10px;
-  }
-  #form-container{
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-  }
-  #form{
-    border-radius: 20px;
-    width: 70%;
-    padding: 20px;
-  }
-  label{
-    padding:5px;
-    margin:20px;
-  }
-  input[type=text], select{
-    width: 65%;
-    padding: 8px 16px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  #form-submit{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  input[id=submit] {
-    width: 40%;
-    background-color: #603601;
-    color: white;
-    padding: 4px 8px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  #folder{
-    display: none;
-    margin:20px;
-    width: 50%;
-    padding: 10px;
-  }
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+  height: 150vh;
+  font-family: "Courier New", Courier, monospace;
+}
+#title-container {
+  padding: 10px;
+}
+#startbtnContainer {
+  margin: 10px;
+  padding: 10px;
+}
+#restartbtn {
+  margin: 10px;
+  padding: 10px;
+}
 
-  p{
-    padding: 10px;
-    margin: 10px;
-  }
-  #statusMessage{
-    display: none;
-    margin:20px;
-    padding:20px;
-    font-family: 'Courier New', Courier, monospace;
-  }
-  
-  #grid-container{
-     display: grid;
-     gap:5px;
-     justify-content:center;
-     margin-top:50px;
-     grid-template-columns: repeat(3, 1fr);
-     grid-template-rows: 1fr 1fr;
-     padding: 10px;
-  }
-  .cell{
-      width:100px;
-      height: 100px;
-      display: flex;
-      justify-content: center;
-      align-items: center; 
-      border-top: none;
-      border-left: none; 
-  }
+#button-container {
+  display: none;
+  margin: 10px;
+}
+#startbtn {
+  padding: 10px;
+  margin: 10px;
+}
+#form-container {
+  display: none;
+  padding: 10px;
+}
+#form {
+  border-radius: 20px;
+  width: 500px;
+  padding: 20px;
+}
+label {
+  padding: 5px;
+  margin: 10px;
+}
+input[type="text"],
+select {
+  width: 30%;
+  padding: 8px 16px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+#form-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+input[id="submitbtn"] {
+  width: 40%;
+  background-color: #603601;
+  color: white;
+  padding: 4px 8px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#folder {
+  display: none;
+  margin: 20px;
+  padding: 10px;
+}
 
+p {
+  display: flex;
+  padding: 10px;
+  margin: 40px;
+  justify-content: center;
+}
+#statusMessage {
+  display: none;
+  margin: 20px;
+  padding: 20px;
+  font-family: "Courier New", Courier, monospace;
+}
 
-
-
+#grid-container {
+  display: none;
+  /* gap: 5px;
+  justify-content: center;
+  margin-top: 50px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr; */
+  padding: 10px;
+}
+.cell {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: none;
+  border-left: none;
+}

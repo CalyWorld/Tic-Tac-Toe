@@ -1,46 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <script defer src="TicTacToe.js"></script>
     <title>Tic Tac Toe</title>
 </head>
+
 <body>
+    <div id="title-container">
+        <h1>TIC TAC TOE</h1>
+    </div>
+
+    <div id="startbtnContainer">
+        <button id="startbtn">Start Game</button>
+        <button id="restartbtn">Restart Game</button>
+    </div>
+
     <div id="form-container">
         <form id="form">
             <label for="fname">PLayer 1: </label>
-            <input type="text" id="fname" placeholder="Enter Name.." name="Name">
-
+            <input type="text" id="fname" placeholder="Enter Name.." name="Name" />
+            <input id="player1-marker" type="text" maxlength="1" placeholder="Player 1 Marker" />
+            <br />
             <label for="lname">PLayer 2: </label>
-            <input type="text" id="lname" placeholder="Enter Name.." name="Name">
+            <input type="text" id="lname" placeholder="Enter Name.." name="Name" />
+            <input id="player2-marker" type="text" maxlength="1" placeholder="Player 2 Marker" />
+            <br />
 
             <div id="form-submit">
-                <input type="button" id="submit" value="submit">
+                <input type="button" id="submitbtn" value="submit" />
             </div>
         </form>
     </div>
-
-    <div id="folder"></div>
 
     <div id="button-container">
         <button id="startbutton">Start/Restart</button>
     </div>
 
+    <div id="folder"></div>
+
     <div id="statusMessage"></div>
 
     <div id="grid-container">
-        <div id="0" class="cell"></div>                              
-        <div id="1" class="cell"></div>
-        <div id="2" style="border-right:none;" class="cell"></div>
-        <div id="3" class="cell"></div>
-        <div id="4" class="cell"></div>
-        <div id="5" style="border-right:none;" class="cell"></div>
-        <div id="6" style="border-bottom: none;" class="cell"></div>
-        <div id="7" style="border-bottom: none;" class="cell"></div>
-        <div id="8" style="border-right:none; border-bottom: none;" class="cell"></div>
-        </div>
+        <div id="0" style="border-right: 1px solid #ccc; border-bottom: 1px solid #ccc" class="cell"></div>
+        <div id="1" style="border-right: 1px solid #ccc; border-bottom: 1px solid #ccc" class="cell"></div>
+        <div id="2" style="border-right: none; border-bottom: 1px solid #ccc" class="cell"></div>
+        <div id="3" style="border-right: 1px solid #ccc; border-bottom: 1px solid #ccc" class="cell"></div>
+        <div id="4" style="border-right: 1px solid #ccc; border-bottom: 1px solid #ccc" class="cell"></div>
+        <div id="5" style="border-right: none; border-bottom: 1px solid #ccc" class="cell"></div>
+        <div id="6" style="border-bottom: none; border-right: 1px solid #ccc" class="cell"></div>
+        <div id="7" style="border-bottom: none; border-right: 1px solid #ccc" class="cell"></div>
+        <div id="8" style="border-right: none; border-bottom: none" class="cell"></div>
+    </div>
 </body>
+
 </html>
