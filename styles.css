@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  border: 1px solid red;
 }
 
 body {
@@ -10,11 +9,18 @@ body {
   align-items: center;
   margin: 0px;
   padding: 0px;
-  height: 150vh;
   font-family: "Courier New", Courier, monospace;
+  background-color: #603601;
 }
 #title-container {
   padding: 10px;
+}
+h1 {
+  color: #ccc;
+  display: flex;
+  padding: 10px;
+  margin: 40px;
+  justify-content: center;
 }
 #startbtnContainer {
   margin: 10px;
@@ -23,6 +29,8 @@ body {
 #restartbtn {
   margin: 10px;
   padding: 10px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: medium;
 }
 
 #button-container {
@@ -32,10 +40,13 @@ body {
 #startbtn {
   padding: 10px;
   margin: 10px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: medium;
 }
 #form-container {
   display: none;
   padding: 10px;
+  border: 1px solid #ccc;
 }
 #form {
   border-radius: 20px;
@@ -64,13 +75,14 @@ select {
 }
 input[id="submitbtn"] {
   width: 40%;
-  background-color: #603601;
-  color: white;
+  background-color: #ccc;
   padding: 4px 8px;
   margin: 8px 0;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-family: "Courier New", Courier, monospace;
+  font-size: medium;
 }
 #folder {
   display: none;
@@ -78,27 +90,19 @@ input[id="submitbtn"] {
   padding: 10px;
 }
 
-p {
-  display: flex;
-  padding: 10px;
-  margin: 40px;
-  justify-content: center;
-}
 #statusMessage {
   display: none;
   margin: 20px;
   padding: 20px;
+  color: #ccc;
   font-family: "Courier New", Courier, monospace;
+  font-size: medium;
 }
 
 #grid-container {
   display: none;
-  /* gap: 5px;
-  justify-content: center;
-  margin-top: 50px;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr 1fr; */
   padding: 10px;
+  margin-bottom: 20px;
 }
 .cell {
   width: 100px;
@@ -108,4 +112,25 @@ p {
   align-items: center;
   border-top: none;
   border-left: none;
+  color: #ccc;
+  font-size: xx-large;
+}
+
+@media only screen and (max-width: 400px) {
+  body {
+    height: 581px;
+  }
+  #form-container {
+    width: 400px;
+  }
+  input[type="text"],
+  select {
+    width: 25%;
+    padding: 8px 16px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
 }
