@@ -96,7 +96,7 @@ input[id="submitbtn"] {
   padding: 20px;
   color: #ccc;
   font-family: "Courier New", Courier, monospace;
-  font-size: medium;
+  font-size: xx-large;
 }
 
 #grid-container {
@@ -116,9 +116,12 @@ input[id="submitbtn"] {
   font-size: xx-large;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 414px) {
   body {
     height: 581px;
+  }
+  h1{
+    margin:20px;
   }
   #form-container {
     width: 400px;
@@ -132,5 +135,8 @@ input[id="submitbtn"] {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+  }
+  #form{
+    padding: 40px;
   }
 }
